@@ -1,0 +1,5 @@
+services:
+  blogs_email_notify.blogs_node_subscriber:
+    class: Drupal\blogs_email_notify\EventSubscriber\BlogsNodeCreateSubscriber
+    tags:
+      - { name: event_subscriber }

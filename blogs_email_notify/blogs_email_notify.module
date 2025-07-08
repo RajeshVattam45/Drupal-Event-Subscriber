@@ -1,0 +1,30 @@
+<?php
+
+use Drupal\blogs_email_notify\Event\BlogCreatedEvent;
+use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_entity_insert().
+ */
+function blogs_email_notify_entity_insert(\Drupal\Core\Entity\EntityInterface $entity) {
+  if ($entity instanceof NodeInterface && $entity->bundle() === 'blogs') {
+    \Drupal::logger('blogs_email_notify')->notice('Dispatching BlogCreatedEvent for: @title', [
+      '@title' => $entity->label(),
+    ]);
+
+    $event = new BlogCreatedEvent($entity);
+    \Drupal::service('event_dispatcher')->dispatch($event, BlogCreatedEvent::EVENT_NAME);
+  }
+}
+
+/**
+ * Implements hook_mail().
+ */
+function blogs_email_notify_mail($key, &$message, $params) {
+  switch ($key) {
+    case 'blog_created_notification':
+      $message['subject'] = $params['subject'];
+      $message['body'][] = $params['message'];
+      break;
+  }
+}

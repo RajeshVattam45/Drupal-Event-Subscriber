@@ -1,0 +1,7 @@
+name: 'Blogs Email Notify'
+type: module
+description: 'Sends email to users when a blog node is created.'
+core_version_requirement: ^10
+package: Custom
+dependencies:
+  - node
