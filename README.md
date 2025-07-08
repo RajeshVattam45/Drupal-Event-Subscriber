@@ -1,6 +1,6 @@
-# 📬 Blogs Email Notify – README
+# Blogs Email Notify – README
 
-## 🔍 Module Overview
+## Module Overview
 ----------------------
 
 **Blogs Email Notify** is a lightweight Drupal custom module that listens for the creation of new nodes of type `blogs` and automatically sends an email notification to all users with the `content_editor` role. This helps keep editorial staff or stakeholders informed in real-time whenever new blog content is published.
@@ -8,7 +8,7 @@
 The implementation uses Drupal's **Event Subscriber** system for a clean, scalable, and modern architecture.
 
 -----------------------
-## ✅ Requirements
+## Requirements
 -----------------------
 
 To make this module work correctly, ensure the following:
@@ -40,14 +40,14 @@ To make this module work correctly, ensure the following:
   - Password: **App Password** (not your Gmail password)
   - From address: same as SMTP account
 
-> 🟨 Note: You must enable "App Password" in your Google account if 2FA is enabled.
+> Note: You must enable "App Password" in your Google account if 2FA is enabled.
 
 ### 4. **Hook Event Dispatcher (Dependency)**
 - This module uses **Event Subscriber**, so it relies on Drupal Core events and Symfony’s dispatcher system.
 - No additional module like `hook_event_dispatcher` is needed for core entity events, but you should be aware of its utility if listening to contributed module events in future.
 
 --------------------------
-## 🛠 Installation & Setup
+## Installation & Setup
 --------------------------
 
 1. Place the `blogs_email_notify` module folder in your `/modules/custom/` directory.
@@ -61,7 +61,7 @@ To make this module work correctly, ensure the following:
 6. Configure SMTP module and send test email to ensure setup works.
 
 -------------------
-## 📬 How It Works
+## How It Works
 -------------------
 
 - The module listens to the **EntityInsertEvent** for new nodes.
@@ -71,7 +71,7 @@ To make this module work correctly, ensure the following:
   - Email includes the blog title and a link to the node.
 
 ----------------------
-## 🛑 Troubleshooting
+## Troubleshooting
 ----------------------
 
 If emails are **not being sent** or **errors are logged**, verify the following:
@@ -87,7 +87,7 @@ If emails are **not being sent** or **errors are logged**, verify the following:
 | Test email not working | Try sending test from SMTP module admin settings to verify mail setup |
 
 ----------------------------
-## 💡 Optional Enhancements
+## Optional Enhancements
 ----------------------------
 
 - Allow configurable content types or roles via settings form
